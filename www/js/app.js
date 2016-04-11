@@ -14,7 +14,7 @@ app.run(function ($ionicPlatform) {
 });
 
 
-app.controller('PredictionController', function ($scope) {
+app.controller('PredictionController', function ($scope, $timeout) {
 
 	var predictionList = [
 		"Signs point to yes",
@@ -40,8 +40,14 @@ app.controller('PredictionController', function ($scope) {
 	];
 
 	$scope.prediction = "Tap 8ball for an answer";
+	$scope.answered = true;
 
 	$scope.ask = function() {
-		$scope.prediction = predictionList[Math.floor(Math.random()*predictionList.length)];
+		$scope.answered = false;
+		$scope.prediction = "Reading the tea leaves...";
+		$timeout(function(){
+			$scope.prediction = predictionList[Math.floor(Math.random()*predictionList.length)];
+			$scope.answered = true;
+		}, 1500);
 	};
 });

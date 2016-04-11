@@ -29,7 +29,7 @@
       </ion-header-bar>
       <ion-content class="ball-center-content padding" scroll="false" ng-controller="PredictionController">
         <img src="img/8ball.png" alt="" ng-click="ask()">
-        <p class="prediction show">{{prediction}}</p>
+        <p ng-class="{'show':answered}" class="prediction show">{{prediction}}</p>
       </ion-content>
     </ion-pane>
   </body>
