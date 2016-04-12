@@ -57,11 +57,12 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
   // watch Acceleration
   var options = { frequency: 100 };
 
-  $scope.accel = document.addEventListener("deviceready", function () {
-		//$scope.accel = -6.6;
+  document.addEventListener("deviceready", function () {
+		$scope.accel = 1.0;
+		console.log("here");
 
-    watch = $cordovaDeviceMotion.watchAcceleration(options);
-    watch.then(
+    $scope.watch = $cordovaDeviceMotion.watchAcceleration(options);
+    $scope.watch.then(
       null,
       function(error) {
       // An error occurred
@@ -72,18 +73,9 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
         var Z = result.z;
         var timeStamp = result.timestamp;
 
-				$scope.apply(function(){ $scope.accel = X; });
+				//$scope.apply(function(){ $scope.accel = X; });
     });
 
-
-    watch.clearWatch();
-    // OR
-    $cordovaDeviceMotion.clearWatch(watch)
-      .then(function(result) {
-        // success
-        }, function (error) {
-        // error
-      });
 
   }, false);
 
