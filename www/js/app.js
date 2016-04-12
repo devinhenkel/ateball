@@ -52,28 +52,25 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
 		}, 1500);
 	};
 
-
-
-  // watch Acceleration
-  var options = { frequency: 100 };
+	// watch Acceleration
+  var options = { frequency: 1000 };
 
   document.addEventListener("deviceready", function () {
-    watch = $cordovaDeviceMotion.watchAcceleration(options);
-    watch.then(
-      null,
-      function(error) {
-      	$scope.apply(function(){ $scope.accel = 'poop'; });
-      },
-      function(result) {
-        var X = result.x;
-        var Y = result.y;
-        var Z = result.z;
-        var timeStamp = result.timestamp;
 
-				$scope.apply(function(){ $scope.accel = 5; });
-    });
+  var watch = $cordovaDeviceMotion.watchAcceleration(options);
+  watch.then(
+    null,
+    function(error) {
+    // An error occurred
+    },
+    function(result) {
+      var X = result.x;
+      var Y = result.y;
+      var Z = result.z;
+      var timeStamp = result.timestamp;
+			$scope.$apply(function(){$scope.accel=15;});
+  });
 
 
-  }, false);
 
 });
