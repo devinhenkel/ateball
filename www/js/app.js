@@ -41,7 +41,7 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
 
 	$scope.prediction = "Tap 8ball for an answer";
 	$scope.answered = true;
-	$scope.accel = 0.1;
+	$scope.accel = 0.0;
 
 	$scope.ask = function() {
 		$scope.answered = false;
@@ -66,14 +66,14 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
       function(error) {
       // An error occurred
       },
-      $scope.$apply(function(result) {
+      function(result) {
         var X = result.x;
         var Y = result.y;
         var Z = result.z;
         var timeStamp = result.timestamp;
 
-				return X;
-    }));
+				$scope.apply(function(){ $scope.accel = X; });
+    });
 
 
     watch.clearWatch();
