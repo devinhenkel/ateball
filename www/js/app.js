@@ -72,7 +72,7 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
         var Z = result.z;
         var timeStamp = result.timestamp;
 
-				$scope.apply(function(){ $scope.accel = X; });
+				$scope.apply(function(){ $scope.accel = 5; });
     });
 
 
