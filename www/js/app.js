@@ -80,13 +80,13 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
       function(error) {
       // An error occurred
       },
-      function(result) {
+      $scope.$apply(function(result) {
         var X = result.x;
         var Y = result.y;
         var Z = result.z;
         var timeStamp = result.timestamp;
 				$scope.accel = Math.abs(X + Y + Z);
-    });
+    }));
 
 
     watch.clearWatch();
