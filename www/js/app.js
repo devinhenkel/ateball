@@ -57,9 +57,9 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
 
   document.addEventListener("deviceready", function () {
 
-  var watcher = $cordovaDeviceMotion.watchAcceleration(options);
+  var watch = $cordovaDeviceMotion.watchAcceleration(options);
 	$scope.accel = 5;
-  watcher.then(
+  watch.then(
     null,
     function(error) {
 	    $scope.accel = 10;
