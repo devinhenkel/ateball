@@ -16,6 +16,7 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
@@ -30,6 +31,7 @@
       <ion-content class="ball-center-content padding" scroll="false" ng-controller="PredictionController">
         <img src="img/8ball.png" alt="" ng-click="ask()">
         <p ng-class="{'show':answered}" class="prediction show">{{prediction}}</p>
+        <div style="color:white">Accel: {{accel}}</div>
       </ion-content>
     </ion-pane>
   </body>

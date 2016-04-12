@@ -1,4 +1,4 @@
-var app = angular.module('ateball', ['ionic']);
+var app = angular.module('ateball', ['ionic', 'ngCordova']);
 
 app.run(function ($ionicPlatform) {
 	$ionicPlatform.ready(function () {
@@ -14,7 +14,7 @@ app.run(function ($ionicPlatform) {
 });
 
 
-app.controller('PredictionController', function ($scope, $timeout) {
+app.controller('PredictionController', function ($scope, $timeout, $cordovaDeviceMotion) {
 
 	var predictionList = [
 		"Signs point to yes",
@@ -50,4 +50,51 @@ app.controller('PredictionController', function ($scope, $timeout) {
 			$scope.answered = true;
 		}, 1500);
 	};
+
+	//device motion
+	document.addEventListener("deviceready", function () {
+
+    $cordovaDeviceMotion.getCurrentAcceleration().then(function(result) {
+      var X = result.x;
+      var Y = result.y;
+      var Z = result.z;
+      var timeStamp = result.timestamp;
+    }, function(err) {
+      // An error occurred. Show a message to the user
+    });
+
+  }, false);
+
+
+  // watch Acceleration
+  var options = { frequency: 20000 };
+
+  document.addEventListener("deviceready", function () {
+
+    var watch = $cordovaDeviceMotion.watchAcceleration(options);
+    watch.then(
+      null,
+      function(error) {
+      // An error occurred
+      },
+      function(result) {
+        var X = result.x;
+        var Y = result.y;
+        var Z = result.z;
+        var timeStamp = result.timestamp;
+				$scope.accel = Math.abs(X+Y+Z);
+    });
+
+
+    watch.clearWatch();
+    // OR
+    $cordovaDeviceMotion.clearWatch(watch)
+      .then(function(result) {
+        // success
+        }, function (error) {
+        // error
+      });
+
+  }, false);
+
 });
