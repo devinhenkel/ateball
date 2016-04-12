@@ -41,6 +41,7 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
 
 	$scope.prediction = "Tap 8ball for an answer";
 	$scope.answered = true;
+	$scope.accel = 0;
 
 	$scope.ask = function() {
 		$scope.answered = false;
@@ -59,6 +60,7 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
       var Y = result.y;
       var Z = result.z;
       var timeStamp = result.timestamp;
+			$scope.accel = Math.abs(X+Y+Z);
     }, function(err) {
       // An error occurred. Show a message to the user
     });
@@ -67,10 +69,10 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
 
 
   // watch Acceleration
-  var options = { frequency: 20000 };
+  var options = { frequency: 1000 };
 
-  document.addEventListener("deviceready", function () {
-
+  document.addEventListener("deviceready", function ($scope) {
+		$scope.accel = 0;
     var watch = $cordovaDeviceMotion.watchAcceleration(options);
     watch.then(
       null,
