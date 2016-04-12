@@ -53,29 +53,15 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
 	};
 
 
-	document.addEventListener("deviceready", function () {
-		$scope.accel = -5.5;
-    $cordovaDeviceMotion.getCurrentAcceleration().then(function(result) {
-      var X = result.x;
-      var Y = result.y;
-      var Z = result.z;
-      var timeStamp = result.timestamp;
-			$scope.accel = Math.abs(X + Y + Z);
-    }, function(err) {
-      // An error occurred. Show a message to the user
-    });
-
-  }, false);
-
 
   // watch Acceleration
   var options = { frequency: 100 };
 
-  document.addEventListener("deviceready", function () {
+  $scope.accel = document.addEventListener("deviceready", function () {
 		$scope.accel = -6.6;
 
-    var watch = $cordovaDeviceMotion.watchAcceleration(options);
-    watch.then(
+    $scope.watch = $cordovaDeviceMotion.watchAcceleration(options);
+    $scope.watch.then(
       null,
       function(error) {
       // An error occurred
@@ -85,7 +71,8 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
         var Y = result.y;
         var Z = result.z;
         var timeStamp = result.timestamp;
-				$scope.accel = Math.abs(X + Y + Z);
+				var currentAccel = Math.abs(X + Y + Z);
+				return currentAccel;
     }));
 
 
