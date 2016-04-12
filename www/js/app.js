@@ -73,7 +73,7 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
 
   document.addEventListener("deviceready", function ($scope) {
 		$scope.accel = 0;
-    var watch = $cordovaDeviceMotion.watchAcceleration(options);
+    $scope.watch = $cordovaDeviceMotion.watchAcceleration(options);
     watch.then(
       null,
       function(error) {
@@ -84,7 +84,7 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
         var Y = result.y;
         var Z = result.z;
         var timeStamp = result.timestamp;
-				$scope.accel = Math.abs(X+Y+Z);
+				accel = Math.abs(X+Y+Z);
     });
 
 
