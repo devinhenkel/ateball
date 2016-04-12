@@ -64,7 +64,7 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
     $scope.watch.then(
       null,
       function(error) {
-      // An error occurred
+      $scope.apply(function(){ $scope.accel = 'poop'; });
       },
       function(result) {
         var X = result.x;
