@@ -68,9 +68,10 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
       var Y = result.y;
       var Z = result.z;
       var timeStamp = result.timestamp;
-			$scope.$apply(function(){$scope.accel=15;});
+			$scope.$apply(function(){
+				$scope.accel=15;
+			});
   });
 
-
-
+});
 });
