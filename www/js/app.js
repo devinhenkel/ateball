@@ -67,12 +67,12 @@ app.controller('PredictionController', function ($scope, $timeout, $cordovaDevic
       // An error occurred
       },
       $scope.$apply(function(result) {
-        var X = result.x;
+        $scope.accel = result.x;
         var Y = result.y;
         var Z = result.z;
         var timeStamp = result.timestamp;
 
-				$scope.accel = X;
+				//$scope.accel = X;
     }));
 
 
