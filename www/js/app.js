@@ -23,14 +23,14 @@ var app = angular.module('ateball', ['ionic', 'ngCordova'])
   });
 });
 
-app.controller('AteBallController', function($scope, $ionicPlatform, $cordovaDeviceMotion){
+app.controller('AteBallController', ['$scope', '$ionicPlatform', '$cordovaDeviceMotion', function($scope, $ionicPlatform, $cordovaDeviceMotion){
   $scope.accel = 1.00;
 
   $ionicPlatform.ready(function() {
     $scope.accel = 2;
     var options = { frequency: 100 };
-    var watch = $cordovaDeviceMotion.watchAcceleration(options);
-    watch.then(
+    $scope.watch = $cordovaDeviceMotion.watchAcceleration(options);
+    $scope.watch.then(
       null,
       function(error) {
       // An error occurred
@@ -47,4 +47,4 @@ app.controller('AteBallController', function($scope, $ionicPlatform, $cordovaDev
       });
   });
 
-});
+}]);
