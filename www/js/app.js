@@ -14,6 +14,8 @@ app.run(function($ionicPlatform) {
 });
 
 app.controller('AteBallController', ['$scope', function($scope){
-  $scope.accel = 10;
+  $scope.accel = 'poop';
+
+
 
 }]);
