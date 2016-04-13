@@ -20,6 +20,9 @@
     "installed_plugins": {
         "cordova-plugin-device-motion": {
             "PACKAGE_NAME": "com.ionicframework.starter"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.ionicframework.ateballtoo773684"
         }
     },
     "dependent_plugins": {},
@@ -42,6 +45,7 @@
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-device-motion": "1.2.0"
+        "cordova-plugin-device-motion": "1.2.0",
+        "cordova-plugin-whitelist": "1.2.1"
     }
 }
