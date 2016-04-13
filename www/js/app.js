@@ -24,7 +24,7 @@ app.controller('AteBallController', ['$scope', '$ionicPlatform', '$cordovaDevice
   $ionicPlatform.ready(function() {
     $scope.accel = 2;
     var options = { frequency: 100 };
-    $scope.watch = $cordovaDeviceMotion.watchAcceleration(options);
+    /*$scope.watch = $cordovaDeviceMotion.watchAcceleration(options);
     $scope.watch.then(
       null,
       function(error) {
@@ -39,7 +39,7 @@ app.controller('AteBallController', ['$scope', '$ionicPlatform', '$cordovaDevice
         $scope.$apply(function(){
           //$scope.accel = Math.abs(X + Y + Z);
         });
-      });
+      });*/
   });
 
 }]);
