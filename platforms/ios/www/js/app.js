@@ -19,25 +19,6 @@ app.controller('AteBallController', ['$scope', function($scope){
   $ionicPlatform.ready(function() {
     $scope.accel = 2;
     var options = { frequency: 100 };
-    var watch = $cordovaDeviceMotion.watchAcceleration(options)
-    .then(
-      function(result) {
-        $scope.accel = 3;
-        var X = result.x;
-        var Y = result.y;
-        var Z = result.z;
-        var timeStamp = result.timestamp;
-        $scope.$apply(function(){
-          $scope.accel = Math.abs(X + Y + Z);
-        },
-        function(error) {
-        // An error occurred
-          $scope.accel = error;
-        }
-      );
-      });
   });
-
-
 
 }]);
