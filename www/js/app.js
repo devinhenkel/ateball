@@ -17,7 +17,8 @@ app.controller('AteBallController', ['$scope', '$ionicPlatform', '$cordovaDevice
   $scope.accel = 555;
 
   //Start Watching method
-$scope.startWatching = function() {
+  $scope.startWatching = function() {
+    $scope.options = { frequency: 100 };
 
     // Device motion configuration
     $scope.watch = $cordovaDeviceMotion.watchAcceleration($scope.options);
@@ -34,7 +35,7 @@ $scope.startWatching = function() {
             $scope.measurements.timestamp = result.timestamp;
 
             // Detecta shake
-            $scope.accel = $scope.measurements.x;  
+            $scope.accel = $scope.measurements.x;
 
         });
     };
