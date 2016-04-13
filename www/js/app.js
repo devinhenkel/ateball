@@ -1,79 +1,48 @@
-var app = angular.module('ateball', ['ionic', 'ngCordova']);
+// Ionic Starter App
 
-app.run(function ($ionicPlatform) {
-	$ionicPlatform.ready(function () {
-		// Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-		// for form inputs)
-		if (window.cordova && window.cordova.plugins.Keyboard) {
-			cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-		}
-		if (window.StatusBar) {
-			StatusBar.styleDefault();
-		}
-	});
+// angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+var app = angular.module('ateball', ['ionic', 'ngCordova'])
+
+.run(function($ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    if(window.cordova && window.cordova.plugins.Keyboard) {
+      // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+      // for form inputs)
+      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+
+      // Don't remove this line unless you know what you are doing. It stops the viewport
+      // from snapping when text inputs are focused. Ionic handles this internally for
+      // a much nicer keyboard experience.
+      cordova.plugins.Keyboard.disableScroll(true);
+    }
+    if(window.StatusBar) {
+      StatusBar.styleDefault();
+    }
+  });
 });
 
+app.controller('AteBallController', function($scope, $ionicPlatform, $cordovaDeviceMotion){
+  $scope.accel = 0.00;
 
-app.controller('PredictionController', function ($scope, $timeout, $cordovaDeviceMotion) {
-
-	var predictionList = [
-		"Signs point to yes",
-		"Yes",
-		"Reply hazy, try again",
-		"Without a doubt",
-		"My sources say no",
-		"As I see it, yes",
-		"You may rely on it",
-		"Concentrate and ask again",
-		"Outlook not so good",
-		"It is decidedly so",
-		"Better not tell you now",
-		"Very doubtful",
-		"Yes - definitely",
-		"It is certain",
-		"Cannot predict now",
-		"Most likely",
-		"Ask again later",
-		"My reply is no",
-		"Outlook good",
-		"Don't count on it"
-	];
-
-	$scope.prediction = "Tap 8ball for an answer";
-	$scope.answered = true;
-	$scope.accel = 0.0;
-
-	$scope.ask = function() {
-		$scope.answered = false;
-		$scope.prediction = "Reading the tea leaves...";
-		$timeout(function(){
-			$scope.prediction = predictionList[Math.floor(Math.random()*predictionList.length)];
-			$scope.answered = true;
-		}, 1500);
-	};
-
-	// watch Acceleration
-  var options = { frequency: 1000 };
-
-  document.addEventListener("deviceready", function () {
-
-  watch = $cordovaDeviceMotion.watchAcceleration(options);
-  watch.then(
-    null,
-    function(error) {
-			$scope.$apply(function(){
-				$scope.accel=10;
-			});
-    },
-    function(result) {
-      var X = result.x;
-      var Y = result.y;
-      var Z = result.z;
-      var timeStamp = result.timestamp;
-			$scope.$apply(function(){
-				$scope.accel=15;
-			});
+  $ionicPlatform.ready(function() {
+    var options = { frequency: 100 };
+    var watch = $cordovaDeviceMotion.watchAcceleration(options);
+    watch.then(
+      null,
+      function(error) {
+      // An error occurred
+      },
+      function(result) {
+        var X = result.x;
+        var Y = result.y;
+        var Z = result.z;
+        var timeStamp = result.timestamp;
+        $scope.$apply(function(){
+          $scope.accel = Math.abs(X + Y + Z);
+        });
+      });
   });
 
-});
 });
