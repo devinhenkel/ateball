@@ -1,4 +1,5 @@
 var app = angular.module('ateball', ['ionic', 'ngCordova']);
+var acceltemp = 0;
 
 app.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -9,15 +10,14 @@ app.run(function($ionicPlatform) {
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-
   });
 });
 
 app.controller('AteBallController', ['$scope', '$ionicPlatform', function($scope, $ionicPlatform){
-  $scope.accel = 'poop';
+  $scope.accel = 555;
 
   $ionicPlatform.ready(function() {
-    $scope.accel = 2;
+    $scope.accel = 5555;
     var options = { frequency: 100 };
   });
 
