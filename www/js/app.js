@@ -13,7 +13,7 @@ app.run(function($ionicPlatform) {
   });
 });
 
-app.controller('AteBallController', ['$scope', function($scope){
+app.controller('AteBallController', ['$scope', '$ionicPlatform', function($scope, $ionicPlatform){
   $scope.accel = 'poop';
 
   $ionicPlatform.ready(function() {
