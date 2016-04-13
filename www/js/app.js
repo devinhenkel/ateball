@@ -16,9 +16,10 @@ app.run(function($ionicPlatform) {
 app.controller('AteBallController', ['$scope', '$ionicPlatform', function($scope, $ionicPlatform){
   $scope.accel = 555;
 
-  $ionicPlatform.ready(function() {
+  $scope.getAccel = function() {
     $scope.accel = 5555;
     var options = { frequency: 100 };
-  });
+  };
 
+  $ionicPlatform.ready(function(){ $scope.getAccel(); });
 }]);
