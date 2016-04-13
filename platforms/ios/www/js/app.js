@@ -13,12 +13,27 @@ app.run(function($ionicPlatform) {
   });
 });
 
-app.controller('AteBallController', ['$scope', '$ionicPlatform', function($scope, $ionicPlatform){
+app.controller('AteBallController', ['$scope', '$ionicPlatform', '$cordovaDeviceMotion', function($scope, $ionicPlatform, $cordovaDeviceMotion){
   $scope.accel = 555;
 
   $scope.getAccel = function() {
     $scope.accel = 5555;
     var options = { frequency: 100 };
+
+    var watch = $cordovaDeviceMotion.watchAcceleration(options)
+    .then(
+        function(result) {
+          var X = result.x;
+          var Y = result.y;
+          var Z = result.z;
+          var timeStamp = result.timestamp;
+          $scope.$apply(function(){
+            $scope.accel = Math.abs(X + Y + Z);
+        },
+        function(error) {
+          // An error occurred
+        });
+      });
   };
 
   $scope.getAccel();
