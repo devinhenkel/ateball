@@ -9,6 +9,11 @@ app.run(function($ionicPlatform) {
     if(window.StatusBar) {
       StatusBar.styleDefault();
     }
-    
+
   });
 });
+
+app.controller('AteBallController', ['$scope', function($scope){
+  $scope.accel = 10;
+
+}]);
