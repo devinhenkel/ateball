@@ -17,10 +17,10 @@ app.controller('AteBallController', ['$scope', '$ionicPlatform', '$cordovaDevice
   $scope.accel = 555;
 
   $scope.getAccel = function() {
-    //$scope.accel = 5555;
+    $scope.accel = 5555;
 
     $cordovaDeviceMotion.getCurrentAcceleration().then(function(result) {
-      alert("wow");
+      $scope.accel = 55555;
       var X = result.x;
       var Y = result.y;
       var Z = result.z;
@@ -30,6 +30,9 @@ app.controller('AteBallController', ['$scope', '$ionicPlatform', '$cordovaDevice
       });
     }, function(err) {
       // An error occurred. Show a message to the user
+      $scope.$apply(function(){
+        $scope.accel = -666;
+      });
     });
   };
 
