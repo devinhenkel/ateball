@@ -26,7 +26,7 @@ app.controller('AteBallController', ['$scope', '$ionicPlatform', '$cordovaDevice
         // Device motion initilaization
         $scope.watch.then(null, function(error) {
             console.log(error);
-            $scope.accel = 666;
+            $scope.accel = error;
         },function(result) {
             $scope.accel = 5555;
             // Set current data
