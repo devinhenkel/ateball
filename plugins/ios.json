@@ -7,14 +7,8 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.ionicframework.ateballtoo773684"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.ionicframework.ateballtoo773684"
-        },
         "cordova-plugin-device-motion": {
-            "PACKAGE_NAME": "com.ionicframework.ateballtoo773684"
+            "PACKAGE_NAME": "com.ionicframework.starter"
         }
     },
     "dependent_plugins": {}

@@ -9,10 +9,6 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Accelerometer\"><param name=\"ios-package\" value=\"CDVAccelerometer\" /></feature>",
                             "count": 1
                         }
@@ -22,26 +18,12 @@
         }
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.ionicframework.ateballtoo773684"
-        },
-        "cordova-plugin-device": {
-            "PACKAGE_NAME": "com.ionicframework.ateballtoo773684"
-        },
         "cordova-plugin-device-motion": {
-            "PACKAGE_NAME": "com.ionicframework.ateballtoo773684"
+            "PACKAGE_NAME": "com.ionicframework.starter"
         }
     },
     "dependent_plugins": {},
     "modules": [
-        {
-            "file": "plugins/cordova-plugin-device/www/device.js",
-            "id": "cordova-plugin-device.device",
-            "pluginId": "cordova-plugin-device",
-            "clobbers": [
-                "device"
-            ]
-        },
         {
             "file": "plugins/cordova-plugin-device-motion/www/Acceleration.js",
             "id": "cordova-plugin-device-motion.Acceleration",
@@ -60,7 +42,6 @@
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-whitelist": "1.2.1",
-        "cordova-plugin-device": "1.1.1"
+        "cordova-plugin-device-motion": "1.2.0"
     }
 }

@@ -3,51 +3,33 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
-  <title></title>
+    <title></title>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
-
-    <!--<link href="css/ionic.app.css" rel="stylesheet">-->
-
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
-    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
+    <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
   </head>
-  <body ng-app="starter" class="platform-ios platform-cordova platform-webview">
+  <body ng-app="ateball">
 
-      <ion-pane ng-controller="MotionController">
-          <ion-header-bar class="bar-positive">
-              <h1 class="title">Ateball</h1>
-          </ion-header-bar>
-
-          <ion-content>
-              <div class="list">
-                  <label class="item item-input">
-                      <span class="input-label">Frequency</span>
-                      <input type="text" placeholder="0" ng-model="options.frequency">
-                  </label>
-              </div>
-              <button class="button button-full button-positive" ng-click="startWatching()">
-                  Start Measurement
-              </button>
-              <button class="button button-full button-positive" ng-click="stopWatching()">
-                  Stop Measurement
-              </button>
-              <h2>X: {{measurements.x}}</h2>
-              <h2>Y: {{measurements.y}}</h2>
-              <h2>Z: {{measurements.z}}</h2>
-              Error: {{errorMessage}}
-          </ion-content>
-      </ion-pane>
-
+    <ion-pane>
+      <ion-header-bar class="bar-stable">
+        <h1 class="title">AteBall</h1>
+      </ion-header-bar>
+      <ion-content>
+      </ion-content>
+    </ion-pane>
   </body>
 </html>
